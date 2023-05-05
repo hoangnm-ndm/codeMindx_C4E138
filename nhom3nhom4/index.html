@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <form action="" id="form">
+      <h2>Register</h2>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" placeholder="Your email..." id="email" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" placeholder="Your password..." id="password" />
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input
+          type="password"
+          placeholder="Confirm Password..."
+          id="confirmPassword"
+        />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn" onclick="send()">send</button>
+      </div>
+      <div class="valid"></div>
+    </form>
+    <script>
+      // import users from "./database.js";
+      const users = [
+        "hoang@gmail.com",
+        "hoang12@gmail.com",
+        "hoangnm@gmail.com",
+      ];
+
+      const emailElement = document.getElementById("email");
+      const passwordElement = document.getElementById("password");
+      const confirmPasswordElement = document.getElementById("confirmPassword");
+
+      const validEmail = (email) => {
+        const status = true;
+        for (let i = 0; i < users.length; i++) {
+          if (email.value === users[i]) {
+            status = false;
+          }
+          return status;
+        }
+      };
+
+      function send() {
+        if (!validEmail(emailElement.value)) {
+          console.log("Email đã tồn tại!");
+        }
+      }
+    </script>
+    <script src="./database.js" type="module"></script>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
