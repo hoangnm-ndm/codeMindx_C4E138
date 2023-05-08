@@ -21,6 +21,23 @@ form.addEventListener("submit", function (event) {
   validEmail(emailElement.value);
   validPasswordlength6(passwordElement.value);
   validPasswordTextUpperCase(passwordElement.value);
+  confirmPassword(passwordElement.value, confirmPasswordElement.value);
+
+  // Nếu tất cả các điều kiện đúng thì báo đăng ký thành công và lưu kết quả vào localStorage
+  if (
+    validEmail(emailElement.value) &&
+    validPasswordlength6(passwordElement.value) &&
+    validPasswordTextUpperCase(passwordElement.value) &&
+    confirmPassword(passwordElement.value, confirmPasswordElement.value)
+  ) {
+    validElement.innerText = "Đăng ký thành công!";
+    const user = {
+      email: emailElement.value,
+      password: passwordElement.value,
+    };
+    localStorage.setItem("user", JSON.stringify(user));
+    window.location.href = "./login.html";
+  }
 });
 
 /**
@@ -73,6 +90,18 @@ const validPasswordTextUpperCase = (password) => {
     return false;
   } else {
     validPasswordTextUpperCaseElement.innerText = "";
+    return true;
+  }
+};
+
+//4. Kiểm tra confirmPassword === password.
+
+const confirmPassword = (confPass, pass) => {
+  if (confPass !== pass) {
+    validConfirmPasswordElement.innerText = "Mật khẩu không khớp!";
+    return false;
+  } else {
+    validConfirmPasswordElement.innerText = "";
     return true;
   }
 };
