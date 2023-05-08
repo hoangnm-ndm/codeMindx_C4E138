@@ -16,49 +16,27 @@
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" placeholder="Your password..." id="password" />
+        <input type="text" placeholder="Your password..." id="password" />
       </div>
       <div class="form-group">
         <label for="confirmPassword">Confirm Password:</label>
         <input
-          type="password"
+          type="text"
           placeholder="Confirm Password..."
           id="confirmPassword"
         />
       </div>
       <div class="form-group">
-        <button type="submit" class="btn" onclick="send()">send</button>
+        <button type="submit" class="btn">send</button>
       </div>
-      <div class="valid"></div>
+      <div id="valid">
+        <p id="validEmail"></p>
+        <p id="validPasswordlength6"></p>
+        <p id="validPasswordTextUpperCase"></p>
+        <p id="validConfirmPassword"></p>
+      </div>
     </form>
-    <script>
-      // import users from "./database.js";
-      const users = [
-        "hoang@gmail.com",
-        "hoang12@gmail.com",
-        "hoangnm@gmail.com",
-      ];
-
-      const emailElement = document.getElementById("email");
-      const passwordElement = document.getElementById("password");
-      const confirmPasswordElement = document.getElementById("confirmPassword");
-
-      const validEmail = (email) => {
-        const status = true;
-        for (let i = 0; i < users.length; i++) {
-          if (email.value === users[i]) {
-            status = false;
-          }
-          return status;
-        }
-      };
-
-      function send() {
-        if (!validEmail(emailElement.value)) {
-          console.log("Email đã tồn tại!");
-        }
-      }
-    </script>
+    <script></script>
     <script src="./database.js" type="module"></script>
     <script src="./index.js" type="module"></script>
   </body>
